@@ -10,6 +10,5 @@ if [ "$t1" = "$t2" ]; then
 else
   ~/RTPi/venv/bin/python RTPi/rtpled.py eth0 &
 fi
-#aplay -t raw -c 1 -f MU_LAW -r 8000 ~/RTPi/rtppipe &
-play -t raw -r 8000 -c 1 -e mu-law ~/RTPi/rtppipe &
-# amixer set Master 75%
+
+play -t raw -r 8000 -c 1 -e mu-law ~/RTPi/rtppipe gain 5 &
