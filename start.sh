@@ -6,9 +6,10 @@ u1=$(id -u)
 export XDG_RUNTIME_DIR=/run/user/$u1
 
 if [ "$t1" = "$t2" ]; then
-  python ~/RTPi/rtpled.py eth1 &
+  ~/RTPi/venv/bin/python RTPi/rtpled.py eth1 &
 else
-  python ~/RTPi/rtpled.py eth0 &
+  ~/RTPi/venv/bin/python RTPi/rtpled.py eth0 &
 fi
-aplay -t raw -c 1 -f MU_LAW -r 8000 ~/RTPi/rtppipe &
-amixer set Master 75%
+#aplay -t raw -c 1 -f MU_LAW -r 8000 ~/RTPi/rtppipe &
+play -t raw -r 8000 -c 1 -e mu-law ~/RTPi/rtppipe &
+# amixer set Master 75%
